@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  body {
+    @apply bg-ink font-body text-white antialiased;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background: rgba(255, 79, 34, 0.3);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid #ff4f22;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #111113;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a2a2e;
+    border-radius: 6px;
+    border: 2px solid #111113;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ff4f22;
+  }
+}
+
+@layer components {
+  .container-layout {
+    @apply mx-auto w-full max-w-layout px-5 sm:px-8;
+  }
+
+  .section-pad {
+    @apply py-20 md:py-28;
+  }
+
+  /* Small uppercase eyebrow with an orange dot — used above section headings. */
+  .eyebrow {
+    @apply inline-flex items-center gap-2.5 font-body text-[13px] font-medium uppercase tracking-[0.22em] text-muted;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply inline-block h-1.5 w-1.5 rounded-full bg-accent;
+  }
+
+  /* Big condensed Oswald display heading. */
+  .display {
+    @apply font-display font-bold uppercase leading-[0.95] tracking-tight text-white;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 font-body font-semibold text-ink transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-8px_rgba(255,79,34,0.6)];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-line px-6 py-3 font-body font-medium text-white transition-colors duration-300 hover:border-white/40 hover:bg-white/5;
+  }
+
+  .card {
+    @apply rounded-4xl border border-line bg-surface;
+  }
+
+  .pill {
+    @apply inline-flex items-center rounded-full border border-line bg-white/5 px-3 py-1 font-body text-[13px] text-muted;
+  }
+}
