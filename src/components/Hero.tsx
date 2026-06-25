@@ -40,7 +40,7 @@ export function Hero() {
           </motion.h1>
 
           <motion.p variants={item} className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-            I build the high-accuracy annotation pipelines that train AI, and the production software
+            I build high-accuracy annotation pipelines that train AI, and the production software
             that ships on top of them. I lead annotation teams at 95-98% accuracy and I founded{' '}
             <span className="text-white">Novi&nbsp;AI</span>.
           </motion.p>
