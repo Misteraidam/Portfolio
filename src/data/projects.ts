@@ -7,10 +7,11 @@
 //  mock annotation canvases instead of a standard card.
 // ─────────────────────────────────────────────────────────────────────────────
 
-export type Category = 'engineering' | 'tooling' | 'annotation'
+export type Category = 'engineering' | 'web' | 'tooling' | 'annotation'
 
 export const CATEGORY_LABELS: Record<Category, string> = {
   engineering: 'AI Engineering',
+  web: 'Web Development',
   tooling: 'Data Tooling',
   annotation: 'Annotation',
 }
@@ -63,8 +64,8 @@ export const ENGINEERING_PROJECTS: EngineeringProject[] = [
     featured: true,
     image: '/shots/novi.png',
     description:
-      'Production multi-agent family-intelligence platform. A router agent dispatches to domain specialists over a shared family memory graph, the product\'s core moat. Built solo across backend, web, and mobile on an Anthropic Claude and OpenAI tool-use stack, with a 24-case deterministic evaluation harness that catches regressions before deployment.',
-    tech: ['Next.js 14', 'Node.js', 'TypeScript', 'Express', 'Expo', 'Claude API', 'OpenAI', 'Firestore', 'Twilio', 'Sentry'],
+      'Production multi-agent family-intelligence platform. A router agent dispatches to domain specialists over a shared family memory graph, the product\'s core moat. Built solo across backend, web, and mobile on a tool-use stack originally built on Anthropic Claude and now running on OpenAI GPT-4o, with a 24-case deterministic evaluation harness that catches regressions before deployment.',
+    tech: ['Next.js 14', 'Node.js', 'TypeScript', 'Express', 'Expo', 'OpenAI GPT-4o', 'Claude API (original build)', 'Firestore', 'Twilio', 'Sentry'],
     links: [{ label: 'Live', href: 'https://novi-ai-alpha.vercel.app', kind: 'live' }],
   },
   {
@@ -83,7 +84,7 @@ export const ENGINEERING_PROJECTS: EngineeringProject[] = [
     id: 'celebration-portal',
     type: 'engineering',
     title: 'Celebration Portal',
-    category: 'engineering',
+    category: 'web',
     tag: 'Full-Stack Web App',
     image: '/shots/celebration.png',
     description:
@@ -95,7 +96,7 @@ export const ENGINEERING_PROJECTS: EngineeringProject[] = [
     id: 'ebh-cosmetics',
     type: 'engineering',
     title: 'EBH Cosmetics: Listen',
-    category: 'engineering',
+    category: 'web',
     tag: 'Frontend / Web Audio',
     image: '/shots/ebh.png',
     description:
@@ -107,7 +108,7 @@ export const ENGINEERING_PROJECTS: EngineeringProject[] = [
     id: 'logo-editor',
     type: 'engineering',
     title: 'Logo Preview Editor',
-    category: 'engineering',
+    category: 'web',
     tag: 'Full-Stack / Internal Tool',
     image: '/shots/logo.png',
     description:
@@ -118,6 +119,24 @@ export const ENGINEERING_PROJECTS: EngineeringProject[] = [
 ]
 
 export const TOOLING_PROJECTS: ToolingProject[] = [
+  {
+    id: 'lidar-ops',
+    type: 'tooling',
+    title: 'LiDAR Annotation Operations System',
+    category: 'tooling',
+    tag: 'Data Pipeline',
+    description:
+      'End-to-end tracking system for a cross-border 3D cuboid project: annotators in India, a QC team in Ghana, a partner vendor and client acceptance sampling. About 13,000 lines across 10 script files.',
+    tech: ['Google Apps Script', 'JavaScript', 'Slack API', 'Google Sheets'],
+    // No image: no screenshot until a redacted one is provided (falls back to a generated cover).
+    depth: [
+      'Rebuilds task history from platform exports that report only current status, using a log that only grows to detect rejections, rework rounds and rework hours.',
+      'Separates genuine rejections from faulty exports: 20+ tasks moving into one phase, then reverting on the next sync, is treated as a glitch. A repair tool with preview and confirmation, safe to run twice, reversed 65 false rework rounds.',
+      "Imports the client's billable unit (valid cuboids inside the region of interest) from platform exports, so effort and billing rest on platform data, not self-reported time.",
+      'Built with an AI coding assistant: I defined the business rules and data sources, tested every change against real project data, and deployed it myself.',
+    ],
+    market: [],
+  },
   {
     id: 'lensor-merge',
     type: 'tooling',
@@ -193,6 +212,23 @@ export const TOOLING_PROJECTS: ToolingProject[] = [
     ],
     market: ['Data Engineer', 'Operations / Finance Tooling', 'Python Developer'],
   },
+]
+
+// Display order of the Work grid (by id). Any project not listed here is appended at the end.
+export const PROJECT_ORDER: string[] = [
+  'novi-ai',
+  'lidar-ops',
+  'supervisely-assigner',
+  'munchen-lidar',
+  'lensor-merge',
+  'v7-dashboard',
+  'property-counts',
+  'celebration-portal',
+  'ebh-cosmetics',
+  'logo-editor',
+  'vehicle-detection',
+  'medical-imaging',
+  'lidar-cuboids',
 ]
 
 // Annotation task types - rendered as mock annotation canvases.

@@ -46,7 +46,7 @@ export const TIMELINE: TimelineEntry[] = [
     location: 'Accra · Self-Employed',
     current: true,
     points: [
-      'Designed a production multi-agent system (Claude + OpenAI) with a router agent dispatching to domain specialists over a shared knowledge graph.',
+      'Designed a production multi-agent system (built on Claude, migrated to GPT-4o) with a router agent dispatching to domain specialists over a shared knowledge graph.',
       'Architected a Node.js/TypeScript/Express backend, Next.js 14 web app, and Expo mobile app with 85% feature parity across platforms.',
       'Built a 24-case deterministic eval framework to catch regressions before deploy, plus a persistent family memory graph as the core moat.',
     ],

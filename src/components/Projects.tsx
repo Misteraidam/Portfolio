@@ -7,6 +7,7 @@ import {
   TOOLING_PROJECTS,
   ANNOTATION_TASKS,
   CATEGORY_LABELS,
+  PROJECT_ORDER,
   type Category,
 } from '../data/projects'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
@@ -24,6 +25,12 @@ interface Card {
   image?: string
   depth?: string[]
   boxes?: { x: number; y: number; w: number; h: number; accent?: 'signal' | 'amber' }[]
+}
+
+// Position in PROJECT_ORDER; unlisted projects go last (stable sort keeps their data order).
+const rank = (id: string) => {
+  const i = PROJECT_ORDER.indexOf(id)
+  return i === -1 ? PROJECT_ORDER.length : i
 }
 
 const CARDS: Card[] = [
@@ -57,7 +64,7 @@ const CARDS: Card[] = [
     image: t.image,
     boxes: t.boxes.map((b) => ({ x: b.x, y: b.y, w: b.w, h: b.h, accent: b.accent })),
   })),
-]
+].sort((a, b) => rank(a.id) - rank(b.id))
 
 function monogram(title: string) {
   return title

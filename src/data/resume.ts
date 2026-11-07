@@ -2,7 +2,7 @@
 
 export const ABOUT_PARAGRAPHS: string[] = [
   'I am Elijah Aidam, an AI Data Operations Lead and Full-Stack AI Engineer based in Accra, Ghana, with 4+ years of experience building the high-accuracy annotation pipelines that train computer vision and LLM systems, and shipping production software on top of them.',
-  'I lead annotation teams at 95-98% accuracy, translate complex client guides into standard operating procedures (SOPs), and engineer the internal tooling (QA automation, performance dashboards, and billing reconciliation) that keeps operations fast and accurate. As the founder and sole engineer of Novi AI, I designed and shipped a production multi-agent platform across web, mobile, and backend on Claude and OpenAI.',
+  'I lead annotation teams at 95-98% accuracy, translate complex client guides into standard operating procedures (SOPs), and engineer the internal tooling (QA automation, performance dashboards, and billing reconciliation) that keeps operations fast and accurate. As the founder and sole engineer of Novi AI, I designed and shipped a production multi-agent platform across web, mobile, and backend originally on Claude, now on OpenAI GPT-4o.',
 ]
 
 
