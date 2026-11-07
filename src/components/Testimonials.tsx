@@ -25,7 +25,8 @@ export function Testimonials() {
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT}
-          className="mt-14 grid gap-5 md:grid-cols-2"
+          // Two columns only when there is more than one quote; a single quote spans the full width.
+          className={`mt-14 grid gap-5 ${TESTIMONIALS.length > 1 ? 'md:grid-cols-2' : ''}`}
         >
           {TESTIMONIALS.map((t) => (
             <motion.figure

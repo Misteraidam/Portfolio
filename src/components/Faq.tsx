@@ -1,14 +1,17 @@
-import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { useId, useState } from 'react'
+import { motion } from 'framer-motion'
 import { Plus } from 'lucide-react'
 import { SectionHead } from './SectionHead'
 import { FAQS } from '../data/resume'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
-import { container, fadeUp, VIEWPORT } from '../lib/anim'
+import { COLLAPSE, container, fadeUp, VIEWPORT } from '../lib/anim'
 
 export function Faq() {
   const reduced = usePrefersReducedMotion()
   const [open, setOpen] = useState<number | null>(0)
+  const uid = useId()
+  const buttonId = (i: number) => `${uid}-q${i}`
+  const panelId = (i: number) => `${uid}-a${i}`
 
   return (
     <section id="faq" className="section-pad">
@@ -28,8 +31,10 @@ export function Faq() {
               <motion.div key={f.q} variants={fadeUp(reduced, 18)} className="card overflow-hidden">
                 <button
                   type="button"
+                  id={buttonId(i)}
                   onClick={() => setOpen(isOpen ? null : i)}
                   aria-expanded={isOpen}
+                  aria-controls={panelId(i)}
                   className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left md:px-8"
                 >
                   <span className="font-display text-lg font-semibold uppercase tracking-tight text-white md:text-xl">
@@ -46,19 +51,19 @@ export function Faq() {
                   </motion.span>
                 </button>
 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: reduced ? 0 : 0.3, ease: 'easeInOut' }}
-                      className="overflow-hidden"
-                    >
-                      <p className="px-6 pb-6 text-muted md:px-8 md:pb-7">{f.a}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* Always in the DOM (so the answer is in the prerendered HTML); collapsed when closed. */}
+                <motion.div
+                  id={panelId(i)}
+                  role="region"
+                  aria-labelledby={buttonId(i)}
+                  initial={false}
+                  animate={isOpen ? 'open' : 'closed'}
+                  variants={COLLAPSE}
+                  transition={{ duration: reduced ? 0 : 0.3, ease: 'easeInOut' }}
+                  className="overflow-hidden"
+                >
+                  <p className="px-6 pb-6 text-muted md:px-8 md:pb-7">{f.a}</p>
+                </motion.div>
               </motion.div>
             )
           })}

@@ -75,7 +75,7 @@ export const ENGINEERING_PROJECTS: EngineeringProject[] = [
     tag: 'Internal Tooling',
     image: '/shots/supervisely.png',
     description:
-      'A Streamlit dashboard that replaces hours of manual annotation-job assignment with point-and-click workflow automation on Supervisely. It handles dataset range-splitting with live gap and overlap detection, per-annotator workload visibility, round-robin quick-fill, and bulk un-assignment, with server-side scoping that cut load time by roughly 200x.',
+      'A Streamlit dashboard that replaces hours of manual annotation-job assignment with point-and-click workflow automation on Supervisely. It handles dataset range-splitting with live gap and overlap detection, per-annotator workload visibility, round-robin quick-fill, and bulk un-assignment, with server-side scoping that cut API calls by roughly 200x.',
     tech: ['Python', 'Streamlit', 'Supervisely REST API', 'pandas'],
     links: [{ label: 'Live', href: 'https://supervisely.streamlit.app', kind: 'live' }],
   },
@@ -129,7 +129,7 @@ export const TOOLING_PROJECTS: ToolingProject[] = [
       'Pulls annotation productivity data from ~12 separate project Google Sheets and merges them into one master, behind a custom "AYA OPS" menu so non-technical teammates run it without touching code.',
     tech: ['Google Apps Script', 'Sheets API', 'HTML Sidebar UI'],
     depth: [
-      'Role-aware deduplication (v2.2): the dedup key includes task/role, so a person who worked the same project on the same date as both annotator and reviewer keeps both rows - fixing a real data-integrity bug where the higher-TPT row silently overwrote the other.',
+      'Role-aware deduplication (v2.2): the dedup key includes task/role, so a person who worked the same project on the same date as both annotator and reviewer keeps both rows - fixing a real data-integrity bug where the higher time-per-task (TPT) row silently overwrote the other.',
       'Daily Summary generator: groups by person + normalised date, rolling up assets handled, accuracy, speed, platform time, and quality scores (collaboration, growth mindset, attitude).',
       'Date-serial handling: normalises Google Sheets epoch-1899 serials vs. real Date objects vs. strings so grouping never breaks.',
       'Automatable: time-based triggers run the merge + summary every morning at 6am.',
@@ -167,11 +167,11 @@ export const TOOLING_PROJECTS: ToolingProject[] = [
       'A reusable productivity-tracking and visualisation tool for V7 projects. It turns raw annotator stats into a live dashboard and keeps the team\'s master sheet in sync with the platform, and is designed to work across any V7 project.',
     tech: ['Google Apps Script', 'V7 Darwin export', 'Google Charts'],
     depth: [
-      'Visual dashboard: per-labeler TPT vs. target, accuracy, speed, combined performance score, platform vs. TD hours, and time-variance %. Date-range filtering, conditional formatting flagging >10% variance, and auto-generated charts.',
+      'Visual dashboard: per-labeler TPT vs. target, accuracy, speed, combined performance score, platform vs. Time Doctor (TD) hours, and time-variance %. Date-range filtering, conditional formatting flagging >10% variance, and auto-generated charts.',
       'Flexible column mapping: matches V7 export columns by multiple possible header names, so it doesn\'t break when V7 changes its export format - this is what makes it reusable across projects.',
       'Bug fix - independent metric counters: accuracy and speed previously shared a counter, skewing results toward 50%; split into independent counters for correct averaging.',
       'Weekend-shift adjustment: work logged Sat/Sun is attributed back to the correct working day.',
-      'Missing-row logging + email-to-name resolution: unmatched rows go to a "Missing" tab; labelerXX@workwithaya.com accounts resolve to real names.',
+      'Missing-row logging + email-to-name resolution: unmatched rows go to a "Missing" tab; internal accounts resolve to real names.',
     ],
     market: ['Data Analyst / BI Developer', 'Analytics Engineer', 'Operations / People Analytics'],
   },

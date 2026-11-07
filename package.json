@@ -6,7 +6,7 @@
   "description": "Portfolio of Elijah Aidam — AI Data Operations Lead & Full-Stack AI Engineer",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "preview": "vite preview",
     "lint": "tsc --noEmit"
   },

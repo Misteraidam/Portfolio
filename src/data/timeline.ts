@@ -1,4 +1,7 @@
 // Career timeline - dates verbatim from the CV.
+// Display order (rendered as-is by components/Experience.tsx): current roles first, with the
+// two Aya Data roles kept together so the promotion is visible, then ended roles by most
+// recent end date.
 export interface TimelineEntry {
   id: string
   org: string
@@ -10,6 +13,31 @@ export interface TimelineEntry {
 }
 
 export const TIMELINE: TimelineEntry[] = [
+  {
+    id: 'aya-lead',
+    org: 'Aya Data',
+    role: 'Data Annotation Team Lead',
+    period: 'Jan 2026 - Present',
+    location: 'Accra',
+    current: true,
+    points: [
+      'Lead teams of up to 20 annotators powering LLM and computer-vision training pipelines; consistently exceed the 90% utilisation standard.',
+      'Maintained 95%+ accuracy across high-stakes healthcare-imaging and renewable-energy projects through daily QA alignment.',
+      'Achieved a 25% increase in annotation efficiency and 20% reduction in rework via daily stand-ups and real-time blocker removal.',
+    ],
+  },
+  {
+    id: 'aya-qa',
+    org: 'Aya Data',
+    role: 'Senior QA Lead & Data Annotator',
+    period: 'Apr 2022 - Dec 2025',
+    location: 'Accra · Promoted to Team Lead',
+    points: [
+      'Led QA for AI training data across healthcare, renewable energy, mobility, and media - achieving 98% accuracy and reducing pipeline errors by 20%.',
+      'Trained 100+ annotators over the role.',
+      'Delivered 2D/3D LiDAR, image, video, and text annotations across healthcare, renewable-energy, mobility, and media clients; created training manuals standardising V7, Labelbox, CVAT, and Dataloop.',
+    ],
+  },
   {
     id: 'novi',
     org: 'Novi AI',
@@ -24,51 +52,35 @@ export const TIMELINE: TimelineEntry[] = [
     ],
   },
   {
-    id: 'aya-lead',
-    org: 'Aya Data',
-    role: 'Data Annotation Team Lead',
-    period: 'Jan 2026 - Present',
-    location: 'Accra',
+    id: 'carehut',
+    org: 'CareHut',
+    role: 'Operations & Client Outreach (freelance)',
+    period: '2026 - Present',
+    location: 'Remote',
     current: true,
     points: [
-      'Lead a squad of 10+ annotators powering LLM and computer-vision training pipelines; consistently exceed the 90% utilisation standard.',
-      'Maintained 95%+ accuracy across high-stakes healthcare-imaging and renewable-energy projects through daily QA alignment.',
-      'Achieved a 25% increase in annotation efficiency and 20% reduction in rework via daily stand-ups and real-time blocker removal.',
-    ],
-  },
-  {
-    id: 'micro1',
-    org: 'micro1',
-    role: 'Video Annotation Specialist',
-    period: 'May 2026 - Jun 2026',
-    location: 'Remote',
-    points: [
-      'Reviewed AI-generated video annotations and captions, correcting model outputs to improve training data for short-form video understanding.',
-      'Audited AI predictions against source footage, flagging and fixing errors to raise dataset accuracy and reduce model hallucination.',
+      'Migrate client documents and data into the platform and run cold-email outreach to new clients for a UK care-management software company.',
     ],
   },
   {
     id: 'cmt',
     org: 'CMT Scanner',
     role: 'Data Annotator - Vehicle Labelling',
-    period: 'Oct 2025 - Present',
+    period: 'Oct 2025 - Aug 2026',
     location: 'Remote',
-    current: true,
     points: [
-      'Label vehicles (trucks, trailers, and other classes) in image and video data for computer-vision and autonomous-systems training.',
-      'Apply precise bounding-box and class annotations to client specifications, maintaining high accuracy across large batches.',
+      'Labelled vehicles (trucks, trailers, and other classes) in image and video data for computer-vision and autonomous-systems training.',
+      'Applied precise bounding-box and class annotations to client specifications, maintaining high accuracy across large batches.',
     ],
   },
   {
-    id: 'aya-qa',
-    org: 'Aya Data',
-    role: 'Senior QA Lead & Data Annotator',
-    period: 'Apr 2022 - Dec 2025',
-    location: 'Accra · Promoted to Team Lead',
+    id: 'micro1',
+    org: 'micro1',
+    role: 'Video Annotation Specialist, RLHF / AI-output evaluation (freelance)',
+    period: 'May 2026 - Jun 2026',
+    location: 'Remote',
     points: [
-      'Led QA for AI training data across healthcare, renewable energy, mobility, and media - achieving 98% accuracy and reducing pipeline errors by 20%.',
-      'Trained and supervised 200+ annotators over the role, boosting team efficiency 25% through workflow optimisation and documentation.',
-      'Delivered 2D/3D LiDAR, image, video, and text annotations across healthcare, renewable-energy, mobility, and media clients; created training manuals standardising V7, Labelbox, CVAT, and Dataloop.',
+      'Evaluated and corrected AI-generated outputs as human feedback for post-training data on robotics models.',
     ],
   },
 ]

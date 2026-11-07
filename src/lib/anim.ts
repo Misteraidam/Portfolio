@@ -11,7 +11,18 @@ export function fadeUp(reduced: boolean, y = 30): Variants {
       }
 }
 
-export const VIEWPORT = { once: true, margin: '-60px' } as const
+/**
+ * Accordion panel that stays in the DOM (so its text is in the prerendered HTML).
+ * Closed: zero height, transparent, and `visibility: hidden` once the collapse
+ * finishes, which removes it from the accessibility tree and tab order.
+ * Use with `initial={false}` so the server and first client render agree.
+ */
+export const COLLAPSE: Variants = {
+  open: { height: 'auto', opacity: 1, visibility: 'visible' },
+  closed: { height: 0, opacity: 0, transitionEnd: { visibility: 'hidden' } },
+}
+
+export const VIEWPORT ={ once: true, margin: '-60px' } as const
 
 export function container(reduced: boolean, stagger = 0.12): Variants {
   return {

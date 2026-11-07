@@ -89,7 +89,8 @@ export function Hero() {
               alt="Elijah Aidam - AI Data Operations Lead and Full-Stack AI Engineer"
               width={850}
               height={1280}
-              fetchPriority="high"
+              // lowercase: React 18 only passes `fetchpriority` through without a warning
+              {...{ fetchpriority: 'high' }}
               decoding="async"
               className="aspect-[4/5] w-full object-cover object-[center_18%]"
             />

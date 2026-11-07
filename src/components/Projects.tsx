@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { useId, useState } from 'react'
+import { motion } from 'framer-motion'
 import { ArrowUpRight, ChevronDown } from 'lucide-react'
 import { SectionHead } from './SectionHead'
 import {
@@ -10,7 +10,7 @@ import {
   type Category,
 } from '../data/projects'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
-import { container, fadeUp, VIEWPORT } from '../lib/anim'
+import { COLLAPSE, container, fadeUp, VIEWPORT } from '../lib/anim'
 
 interface Card {
   id: string
@@ -145,6 +145,7 @@ function Cover({ card }: { card: Card }) {
 
 function ProjectCard({ card, reduced }: { card: Card; reduced: boolean }) {
   const [open, setOpen] = useState(false)
+  const panelId = `${useId()}-depth`
   const isLink = !!card.href
   const Tag = isLink ? motion.a : motion.div
   const linkProps = isLink ? { href: card.href, target: '_blank', rel: 'noopener noreferrer' } : {}
@@ -201,6 +202,7 @@ function ProjectCard({ card, reduced }: { card: Card; reduced: boolean }) {
               type="button"
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
+              aria-controls={panelId}
               className="inline-flex items-center gap-1.5 border-t border-line pt-4 font-body text-sm font-medium text-accent"
             >
               <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.25 }}>
@@ -209,24 +211,22 @@ function ProjectCard({ card, reduced }: { card: Card; reduced: boolean }) {
               {open ? 'Hide details' : 'How it works'}
             </button>
 
-            <AnimatePresence initial={false}>
-              {open && (
-                <motion.ul
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: reduced ? 0 : 0.3, ease: 'easeInOut' }}
-                  className="overflow-hidden"
-                >
-                  {card.depth.map((d, i) => (
-                    <li key={i} className="mt-3 flex gap-2.5 text-sm leading-relaxed text-muted">
-                      <span className="mt-1.5 h-1 w-3 shrink-0 bg-accent/60" />
-                      <span>{d}</span>
-                    </li>
-                  ))}
-                </motion.ul>
-              )}
-            </AnimatePresence>
+            {/* Always in the DOM (so the details are in the prerendered HTML); collapsed when closed. */}
+            <motion.ul
+              id={panelId}
+              initial={false}
+              animate={open ? 'open' : 'closed'}
+              variants={COLLAPSE}
+              transition={{ duration: reduced ? 0 : 0.3, ease: 'easeInOut' }}
+              className="overflow-hidden"
+            >
+              {card.depth.map((d, i) => (
+                <li key={i} className="mt-3 flex gap-2.5 text-sm leading-relaxed text-muted">
+                  <span className="mt-1.5 h-1 w-3 shrink-0 bg-accent/60" />
+                  <span>{d}</span>
+                </li>
+              ))}
+            </motion.ul>
           </div>
         )}
       </div>

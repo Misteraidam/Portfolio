@@ -60,7 +60,7 @@ export const ENGINEERING_STACK: StackGroup[] = [
 
 export const HERO_STATS = [
   { value: '4+', label: 'Years in data ops' },
-  { value: '200+', label: 'Annotators led' },
+  { value: '100+', label: 'Annotators trained' },
   { value: '95-98%', label: 'Dataset accuracy' },
   { value: 'Novi AI', label: 'Founder & engineer' },
 ]

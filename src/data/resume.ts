@@ -43,7 +43,7 @@ export const CLIENTS: string[] = [
   'Mobility & Ride-hailing',
   'Media & Streaming',
   'Autonomous Vehicles',
-  'Short-form Video AI',
+  'Robotics AI',
 ]
 
 export interface ResumeEntry {
@@ -65,24 +65,6 @@ export const EDUCATION: ResumeEntry[] = [
   },
 ]
 
-export interface Skill {
-  label: string
-  level: number // percent
-}
-
-// Realistic self-ratings grounded in the CV: annotation/QA is the deep core
-// (4+ years, QA lead, 95-98% accuracy); engineering is strong but newer (self-taught,
-// shipped Novi solo) so it sits a tier below - which reads as honest, not weaker.
-export const SKILLS: Skill[] = [
-  { label: 'Data Annotation & QA', level: 96 },
-  { label: 'Computer Vision Labelling (2D/3D/LiDAR)', level: 92 },
-  { label: 'Team Leadership & Annotation Ops', level: 90 },
-  { label: 'Annotation Tooling & QA Automation', level: 88 },
-  { label: 'Python (data processing & automation)', level: 82 },
-  { label: 'AI & Agent Orchestration (Claude/OpenAI)', level: 80 },
-  { label: 'TypeScript · React · Next.js', level: 78 },
-]
-
 export interface Testimonial {
   quote: string
   name: string
@@ -97,12 +79,6 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'Michael Asamoah Marfo',
     role: 'Solutions Team Architect',
     link: 'https://www.linkedin.com/in/michael-asamoa-marfo-6a220b176/',
-  },
-  {
-    quote: 'Recognised by Aya Data leadership for leading the team that won a key medical-imaging project.',
-    name: 'Aya Data',
-    role: 'Leadership recognition',
-    link: 'https://www.linkedin.com/company/aya-data/',
   },
 ]
 
