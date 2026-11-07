@@ -65,7 +65,7 @@ export const ENGINEERING_PROJECTS: EngineeringProject[] = [
     image: '/shots/novi.png',
     description:
       'Production multi-agent family-intelligence platform. A router agent dispatches to domain specialists over a shared family memory graph, the product\'s core moat. Built solo across backend, web, and mobile on a tool-use stack originally built on Anthropic Claude and now running on OpenAI GPT-4o, with a 24-case deterministic evaluation harness that catches regressions before deployment.',
-    tech: ['Next.js 14', 'Node.js', 'TypeScript', 'Express', 'Expo', 'OpenAI GPT-4o', 'Claude API (original build)', 'Firestore', 'Twilio', 'Sentry'],
+    tech: ['OpenAI GPT-4o', 'TypeScript', 'Next.js 14', 'Node.js', 'Express', 'Expo', 'Claude API (original build)', 'Firestore', 'Twilio', 'Sentry'],
     links: [{ label: 'Live', href: 'https://novi-ai-alpha.vercel.app', kind: 'live' }],
   },
   {
